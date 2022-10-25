@@ -16,7 +16,7 @@ provider "yandex" {
   zone      = "ru-central1-a"
 }
 
-resource "yandex_compute_instance" "test" {
+resource "yandex_compute_instance" "test-monitoring" {
   name        = "test-monitoring"
   platform_id = "standard-v1"
   zone        = "ru-central1-a"
@@ -41,3 +41,5 @@ resource "yandex_compute_instance" "test" {
     foo      = "bar"
     ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
   }
+ 
+}
