@@ -17,11 +17,6 @@ data "yandex_dns_zone" "zone1" {
   name = "my-public-zone"
 }
 
-module "smartvan28-network" {
-  source  = "smartvan28/smartvan28-network/registry"
-  version = "1.0.0"
-}
-
 
 resource "yandex_compute_instance" "test-monitoring" {
   name        = "test-monitoring"
