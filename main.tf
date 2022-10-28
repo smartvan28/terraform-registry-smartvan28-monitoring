@@ -17,13 +17,6 @@ data "yandex_dns_zone" "zone1" {
   name = "my-public-zone"
 }
 
-provider "yandex" {
-  token     = var.key1
-  cloud_id  = var.cloud_id1
-  folder_id = var.folder_id1
-  zone      = "ru-central1-a"
-}
-
 module "smartvan28-network" {
   source  = "smartvan28/smartvan28-network/registry"
   version = "1.0.0"
