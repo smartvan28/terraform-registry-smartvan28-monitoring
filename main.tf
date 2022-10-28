@@ -35,7 +35,7 @@ resource "yandex_compute_instance" "test-monitoring" {
   }
 
   network_interface {
-    subnet_id = "${yandex_vpc_subnet.foo.id}"
+    subnet_id = data.yandex_vpc_subnet.test_subnet.id
     nat = true
   }
 
