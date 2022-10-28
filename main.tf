@@ -9,6 +9,14 @@ terraform {
   required_version = ">= 0.13"
 }
 
+data "yandex_vpc_subnet" "test_subnet" {
+  name = "test_subnet"
+}
+
+data "yandex_dns_zone" "zone1" {
+  name = "my-public-zone"
+}
+
 provider "yandex" {
   token     = var.key1
   cloud_id  = var.cloud_id1
@@ -48,4 +56,12 @@ resource "yandex_compute_instance" "test-monitoring" {
     ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
   }
  
+}
+  
+resource "yandex_dns_recordset" "rs1" {
+  zone_id = data.yandex_dns_zone.zone1.id
+  name    = "monitoring.docker.smartvan.space."
+  type    = "A"
+  ttl     = 200
+  data    = ["${yandex_compute_instance.test.network_interface.0.ip_address}"]
 }
