@@ -51,5 +51,5 @@ resource "yandex_dns_recordset" "rs1" {
   name    = "monitoring.docker.smartvan.space."
   type    = "A"
   ttl     = 200
-  data    = ["${yandex_compute_instance.test-monitoring.network_interface.0.ip_address}"]
+  data    = ["${yandex_compute_instance.test-monitoring.network_interface.0.nat_ip_address}"]
 }
